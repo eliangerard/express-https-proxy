@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
@@ -15,6 +16,7 @@ const credentials = {
 };
 
 const app = express();
+app.use(cors());
 
 // Creamos un proxy para reenviar las solicitudes
 const proxy = httpProxy.createProxyServer({});
