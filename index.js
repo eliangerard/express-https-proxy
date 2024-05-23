@@ -22,8 +22,8 @@ app.use(cors());
 const proxy = httpProxy.createProxyServer({});
 
 app.use((req, res) => {
-    // Aquí reenviamos todas las solicitudes a la otra API
-    proxy.web(req, res, { target: server });
+    const { target = server } = req.query;
+    proxy.web(req, res, { target });
 });
 
 // Creamos el servidor HTTP y HTTPS
